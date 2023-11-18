@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+
+import dataObjectFromFile from "../item.json";
+---
+
+<script>
+  var j = 4;
+</script>
+
+<Layout title="Welcome to Astro.">
+  <ul>
+    {dataObjectFromFile.Plates.map((data) => <li><a href=`/${data.Name}`>{data.Name}</a></li>)}
+  </ul>
+</Layout>

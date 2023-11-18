@@ -1,0 +1,16 @@
+---
+import dataObjectFromFile from "../item.json";
+
+export function getStaticPaths() {
+  var routes: {params:{platename:string}}[] = [];
+  dataObjectFromFile.Plates.map((data) => routes.push({params: {platename: data.Name}}));
+
+  return routes;
+}
+
+const { platename } = Astro.params;
+---
+
+<span>{platename}</span>
+<span>{dataObjectFromFile.Plates.find(d => d.Name==platename)?.Name}</span>
+<span>{dataObjectFromFile.Plates.find(d => d.Name==platename)?.Items.Body.ItemId}</span>
