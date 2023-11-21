@@ -3,6 +3,21 @@ import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 
 import dataObjectFromFile from "../item.json";
+
+
+var getImgUrl = async () => {
+  var ItemName = "Anabaseios Bracelet of Aiming"
+  ItemName =  ItemName.replaceAll(" ", "_");
+  const response = await fetch(`https://ffxiv.gamerescape.com/wiki/File:${ItemName}_Icon.png`);
+  const body = await response.text();
+  //console.log(body);
+  //regex
+  const regex = `<a href="\/w\/images\/.\/..\/${ItemName}_Icon.png">`;
+  //use it
+  const matches = body.match(regex);
+  console.log(matches![0]);
+}
+
 ---
 
 <script>
